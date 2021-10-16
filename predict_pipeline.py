@@ -8,7 +8,7 @@ from entities.predict_pipeline_params import (
     PredictPipelineParams,
     read_predict_params
 )
-from log.utils import set_logging_config
+from logs.utils import set_logging_config
 from src.models.model_utils import deserialize
 
 
