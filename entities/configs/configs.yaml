@@ -1,6 +1,6 @@
 output_model_path: "models/model_lr.pkl"
 data_path: "../../input/cassava-leaf-disease-classification/"
-train_csv_data_path: "/data/external/input/cassava-leaf-disease-classification-small/train.csv"
+train_csv_data_path: "../../input/cassava-leaf-disease-classification-small/train.csv"
 label_json_data_path: "../../input/cassava-leaf-disease-classification/label_num_to_disease_map.json"
 train_img_path: "../../input/cassava-leaf-disease-classification/train_images/"
 test_img_path: "../../input/cassava-leaf-disease-classification/test_images/"
