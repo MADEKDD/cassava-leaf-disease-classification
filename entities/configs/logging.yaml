@@ -75,7 +75,7 @@ loggers:
       - console
     propagate: no
 
-  root:
+root:
     level: INFO
     handlers:
       - console

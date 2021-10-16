@@ -5,7 +5,7 @@ label_json_data_path: "../../input/cassava-leaf-disease-classification/label_num
 train_img_path: "../../input/cassava-leaf-disease-classification/train_images/"
 test_img_path: "../../input/cassava-leaf-disease-classification/test_images/"
 log_params:
-    path_to_config: "/entities/configs/logging.yaml"
+    path_to_config: "entities/configs/logging.yaml"
 model_params:
     num_classes: 5
     name: "resnet18"
