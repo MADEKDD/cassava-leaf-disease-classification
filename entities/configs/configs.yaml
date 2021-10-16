@@ -1,18 +1,11 @@
 output_model_path: "models/model_lr.pkl"
 data_path: "../../input/cassava-leaf-disease-classification/"
-train_csv_data_path: "../../input/cassava-leaf-disease-classification/train.csv"
+train_csv_data_path: "/data/external/input/cassava-leaf-disease-classification-small/train.csv"
 label_json_data_path: "../../input/cassava-leaf-disease-classification/label_num_to_disease_map.json"
 train_img_path: "../../input/cassava-leaf-disease-classification/train_images/"
 test_img_path: "../../input/cassava-leaf-disease-classification/test_images/"
 log_params:
     path_to_config: "entities/configs/logging.yaml"
-#split_params:
-#    random_seed: 101
-#    val_size: 0.25
-#feature_params:
-#    features_and_transformers_map: "entities/configs/features_lr.yaml"
-#    target:
-#        - target
 model_params:
     num_classes: 5
     name: "resnet18"
@@ -21,6 +14,3 @@ model_params:
     num_workers: 4
     image_size: 256
     pretrain: False
-    #hyper_params:
-    #    random_state: 1
-    #    max_iter: 1000
