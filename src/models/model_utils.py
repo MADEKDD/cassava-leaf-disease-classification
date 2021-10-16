@@ -46,7 +46,6 @@ def val_one_epoch(model, loss, data_loader, device):
     
     preds_all = np.concatenate(preds_all)
     targets_all = np.concatenate(targets_all)
-    print('accuracy = {:.4f}'.format((preds_all==targets_all).mean()))
     
     #return (preds_all==targets_all).mean()
     logger.debug("start evaluate_model")
@@ -60,6 +59,7 @@ def val_one_epoch(model, loss, data_loader, device):
             y_pred=preds_all       
         )
     }
+    print('accuracy = {:.4f}'.format((preds_all==targets_all).mean()))
     logger.debug("stop evaluate_model")
     return (preds_all==targets_all).mean(), scores
 
