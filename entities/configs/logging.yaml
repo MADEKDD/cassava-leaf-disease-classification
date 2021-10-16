@@ -14,19 +14,19 @@ handlers:
     class: logging.FileHandler
     formatter: simple
     level: DEBUG
-    filename: "log/info_logs.log"
+    filename: "logs/info_logs.log"
 
   file_error:
     class: logging.FileHandler
     formatter: simple
     level: ERROR
-    filename: "log/errors_logs.log"
+    filename: "logs/errors_logs.log"
 
   file_warnings:
     class: logging.FileHandler
     formatter: simple
     level: WARNING
-    filename: "log/warnings_logs.log"
+    filename: "logs/warnings_logs.log"
 
 loggers:
 
@@ -75,7 +75,7 @@ loggers:
       - console
     propagate: no
 
-root:
+  root:
     level: INFO
     handlers:
       - console
