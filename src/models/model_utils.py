@@ -91,7 +91,8 @@ def create_model(model_params: ModelParameters):
     cassava_resnet18.apply(he_init)
     model = cassava_resnet18.to(device)
     optimizer = torch.optim.Adam(model.parameters())
-    loss = nn.CrossEntropyLoss().to(device)
+    weight = torch.tensor([1087/21397, 2189/21397, 2386/21397,13158/21397, 2577/21397], dtype=torch.float, device='cuda:0')
+    loss = nn.CrossEntropyLoss(weight=weight).to(device)
     logger.info(f"Created model: {cassava_resnet18}")
     logger.debug("end create_model")
     return model, optimizer, loss, device
