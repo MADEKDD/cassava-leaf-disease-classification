@@ -9,7 +9,7 @@ log_params:
 model_params:
     num_classes: 5
     name: "resnet18"
-    epochs: 30
+    epochs: 20
     batch_size: 20
     num_workers: 4
     image_size: 256
