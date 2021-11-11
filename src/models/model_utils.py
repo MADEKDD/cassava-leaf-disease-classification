@@ -99,7 +99,7 @@ def create_model(model_params: ModelParameters):
 
 
 def save_model(model, output_path, model_params):
-    torch.save(model.state_dict(),output_path + 'cassnet_{}'.format(model_params.epochs))
+    torch.save(model, output_path + 'cassnet_{}'.format(model_params.epochs))
 
 def load_model():
     model.load_state_dict(torch.load(filepath))
