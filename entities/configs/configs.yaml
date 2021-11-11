@@ -1,4 +1,4 @@
-output_model_path: "models/model_lr.pkl"
+output_model_path: "../"
 data_path: "../../input/cassava-leaf-disease-classification/"
 train_csv_data_path: "../../input/cassava-leaf-disease-classification/train.csv"
 label_json_data_path: "../../input/cassava-leaf-disease-classification/label_num_to_disease_map.json"
@@ -9,7 +9,7 @@ log_params:
 model_params:
     num_classes: 5
     name: "resnet18"
-    epochs: 20
+    epochs: 1
     batch_size: 20
     num_workers: 4
     image_size: 256
