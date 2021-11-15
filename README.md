@@ -87,10 +87,11 @@ jupyter notebook notebooks/cassava-leaf-disease-classification.ipynb
 ```
 
 ## Prediction
-
+for making prediction copy pictures to test_images folder and run:
 ```bash
-????
+!python3 predict_pipeline.py entities/configs/predict_config.yaml.yaml
 ```
+after the prediction is finished open the file result.csv
 
 ## Local project testing
 ```bash

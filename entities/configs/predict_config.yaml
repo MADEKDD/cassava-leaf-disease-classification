@@ -1,0 +1,14 @@
+model_path: "./models/cassnet_20-2"
+predict_csv_data_path: "./data/external/cassava-leaf-disease-classification/predict.csv"
+predict_img_path: "./data/external/cassava-leaf-disease-classification/test_images/"
+output_target_path: "./data/external/cassava-leaf-disease-classification/result.csv"
+log_params:
+    path_to_config: "entities/configs/logging.yaml"
+model_params:
+    num_classes: 5
+    name: "resnet18"
+    epochs: 20
+    batch_size: 20
+    num_workers: 4
+    image_size: 256
+    pretrain: False
