@@ -36,12 +36,38 @@ class GetData(Dataset):
         if not self.label_out:
             return img
 
+
 def get_img(path):
     im_bgr = cv2.imread(path)
     im_rgb = im_bgr[:, :, ::-1]
     return im_rgb
 
 
+def get_pred_imgs(pred_img_path):
+    """
+    функция получения списка картинок из папки
+    :param pred_img_path:
+    :return:
+    """
+    from os import listdir
+    from os.path import isfile, join
+    images = [f for f in listdir(pred_img_path) if isfile(join(pred_img_path, f))]
+    return images
+
+
+def read_pred_data(path_to_data: str) -> pd.DataFrame:
+    """
+    Формируем датасет
+    :param path_to_data:
+    :return:
+    """
+    logger.debug("start read_data")
+    # получаем список картинок из папки
+    images = get_pred_imgs(path_to_data)
+    df = pd.DataFrame(columns=['image_id'])
+    df["image_id"] = images
+    logger.debug("stop read_data")
+    return df
 
 
 def read_data(path_to_data: str) -> pd.DataFrame:
@@ -50,6 +76,27 @@ def read_data(path_to_data: str) -> pd.DataFrame:
     df['label'] = df['label'].astype('string')
     logger.debug("stop read_data")
     return df
+
+
+def get_preds_data(df: pd.DataFrame, image_size: int, pred_img_path: str,):
+    """
+    формируем датасет для pytorch
+    :param df:
+    :param image_size:
+    :param pred_img_path:
+    :return:
+    """
+    pred_trans = A.Compose([
+        A.CenterCrop(image_size, image_size),
+        A.Normalize(image_size, image_size),
+        ToTensorV2(),
+    ])
+    pred_ds = GetData(df, pred_img_path, label_out=False, transform=pred_trans)
+    pred_dl = DataLoader(
+        pred_ds,
+        shuffle=True
+    )
+    return pred_dl
 
 
 def train_val_split(
@@ -92,8 +139,8 @@ def train_val_split(
         ToTensorV2(),
     ])
         
-    train_ds = GetData(train_df, train_img_path, label_out = True, transform=train_trans)
-    valid_ds = GetData(valid_df, train_img_path, label_out = True, transform=val_trans)
+    train_ds = GetData(train_df, train_img_path, label_out=True, transform=train_trans)
+    valid_ds = GetData(valid_df, train_img_path, label_out=True, transform=val_trans)
     
     train_dl = DataLoader(
         train_ds,
