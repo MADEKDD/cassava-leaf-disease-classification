@@ -9,6 +9,6 @@ model_params:
     name: "resnet18"
     epochs: 20
     batch_size: 20
-    num_workers: 4
-    image_size: 256
+    num_workers: 8
+    image_size: 224
     pretrain: False

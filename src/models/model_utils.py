@@ -158,7 +158,7 @@ def load_model(model_path, model=None):
     """
     #checkpoint = torch.load(model_path,  map_location='cpu')  # загрузка словаря с параметрами модели
     #model.load_state_dict(checkpoint)  # добавление значений в модель
-    model = torch.load(model_path,  map_location='cpu')  # добавление значений в модель
+    model = torch.load(model_path,  map_location=torch.device('cpu'))  # добавление значений в модель
     # model.load_state_dict(torch.load(filepath))
     # model.eval()
     return model

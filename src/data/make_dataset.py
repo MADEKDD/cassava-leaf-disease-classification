@@ -78,7 +78,7 @@ def read_data(path_to_data: str) -> pd.DataFrame:
     return df
 
 
-def get_preds_data(df: pd.DataFrame, image_size: int, pred_img_path: str,):
+def get_preds_data(df: pd.DataFrame, image_size: int, pred_img_path: str, batch_size: int, num_workers: int):
     """
     формируем датасет для pytorch
     :param df:
@@ -86,15 +86,19 @@ def get_preds_data(df: pd.DataFrame, image_size: int, pred_img_path: str,):
     :param pred_img_path:
     :return:
     """
+    img_mean = [0.485, 0.456, 0.406]
+    img_std = [0.229, 0.224, 0.225]
     pred_trans = A.Compose([
         A.CenterCrop(image_size, image_size),
-        A.Normalize(image_size, image_size),
+        A.Normalize(img_mean, img_std),
         ToTensorV2(),
     ])
     pred_ds = GetData(df, pred_img_path, label_out=False, transform=pred_trans)
     pred_dl = DataLoader(
         pred_ds,
-        shuffle=True
+        batch_size=batch_size,
+        num_workers=num_workers,
+        shuffle=False
     )
     return pred_dl
 

@@ -35,7 +35,8 @@ def predict_pipeline(settings):
     # загрузка данных для прогноза
     data = read_pred_data(settings.predict_img_path)
     # конвертация в датасет для прогноза
-    predict_dl = get_preds_data(data, settings.model_params.image_size, settings.predict_img_path)
+    predict_dl = get_preds_data(data, settings.model_params.image_size, settings.predict_img_path,
+                                settings.model_params.batch_size, settings.model_params.num_workers)
     # выполняем прогноз
     predictions = predict_class(model, predict_dl, device)
     # сохраняем результат
