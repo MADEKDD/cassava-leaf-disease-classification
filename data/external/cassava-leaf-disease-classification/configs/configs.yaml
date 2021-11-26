@@ -1,0 +1,16 @@
+input_data_path: "data/external/cassava-leaf-disease-classification"
+output_model_path: "models/model_lr.pkl"
+log_params:
+    path_to_config: "configs/logging.yaml"
+split_params:
+    random_seed: 101
+    val_size: 0.25
+feature_params:
+    features_and_transformers_map: "configs/features_lr.yaml"
+    target:
+        - target
+model_params:
+    name: "LogisticRegression"
+    hyper_params:
+        random_state: 1
+        max_iter: 1000
